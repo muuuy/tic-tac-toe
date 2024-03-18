@@ -1,6 +1,8 @@
 :root {
     --pastel-green: #77DD77;
     --pastel-red: #FF6961;
+    --paste-blue: #AEC6CF;
+    --darker-blue:rgb(127, 187, 209);
 }
 
 * {
@@ -11,10 +13,41 @@
 
 body {
     display: flex;
+    flex-direction: column;
     height: 100vh;
     width: 100%;
     justify-content: center;
     align-items: center;
+}
+
+.result {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.x {
+    color: var(--pastel-red);
+}
+
+.o {
+    color: var(--pastel-green);
+}
+
+button {
+    margin: 12px;
+    height: 4rem;
+    width: 12rem;
+    font-size: 20px;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--paste-blue);
+}
+
+button:hover {
+    background-color: var(--darker-blue);
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
 }
 
 .game-board {
@@ -49,17 +82,25 @@ body {
 }
 
 .result-screen {
-    /* display: none; */
+    display: none;
     background-color: black;
-    padding: 10px;
+    padding: 20px;
     border-radius: 12px;
     color:white;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 900;
     position: absolute;
     
+}
+
+.result-screen > button {
+    height: 4rem;
+    width: 12rem;
+    font-size: 20px;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
 }

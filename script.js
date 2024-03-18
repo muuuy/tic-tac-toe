@@ -1,5 +1,6 @@
 let gridSpaces = document.querySelectorAll(".board-space")
 let board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+const resetBtn = document.querySelector(".reset-button")
 let playerTurn = 0;
 
 //click on grid - place piece
@@ -22,12 +23,14 @@ gridSpaces.forEach(grid => {
 
             index = Array.from(gridSpaces).indexOf(grid)
             board[Math.floor(index/3)][index%3] = playerPiece
+
             tempPiece.textContent = playerPiece
             grid.appendChild(tempPiece)
             
+            const winner = checkWinner()
             //There is a winner
-            if(checkWinner() !== -1) {
-                resultScreen()
+            if(winner !== -1) {
+                resultScreen(winner)
             }
         }
     })
@@ -52,8 +55,7 @@ const checkWinner = () => {
     //DIAGONAL
     if(board[0][0] !== 0 && board[0][0] === board[1][1] && board[0][0] == board[2][2]) {
         return board[0][0]
-    }
-    else if(board[0][2] !== 0 && board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
+    } else if(board[0][2] !== 0 && board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
         return board[0][2]
     }
 
@@ -61,8 +63,31 @@ const checkWinner = () => {
 }
 
 //Displays result screen
-const resultScreen = () => {
-    let results = document.querySelector(".result-screen")
-    results.style.display = "block";
-    
+const resultScreen = (winner) => {
+    let results = document.querySelector(".result")
+
+    if(winner === 'X') {
+        results.innerHTML += `<span class="x">${winner}<span>`
+    } else {
+        results.innerHTML += `<span class="o">${winner}<span>`
+    }
+
+    document.querySelector(".game-board").style.pointerEvents = "none"
 }
+
+//Reset Board
+resetBtn.addEventListener("click", () => {
+    board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    document.querySelector(".game-board").style.pointerEvents = "auto"
+
+    gridSpaces.forEach(grid => {
+        while(grid.firstChild) {
+            grid.removeChild(grid.firstChild)
+        }
+    })
+
+    let spanElement = document.querySelector(".result span")
+    if(spanElement) {
+        spanElement.remove()
+    }
+})
