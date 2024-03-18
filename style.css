@@ -9,12 +9,15 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 .game-board {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: 50%;
-    transform: translate(-50%, -50%);
     display: grid;
     width: 50em;
     height: 50em;
@@ -27,7 +30,7 @@
     border: 1px solid black;
 }
 
-p {
+.board-space > p {
     display: flex;
     height: 100%;
     width: 100%;
@@ -43,4 +46,20 @@ p {
 
 .o-piece {
     color: var(--pastel-green);
+}
+
+.result-screen {
+    /* display: none; */
+    background-color: black;
+    padding: 10px;
+    border-radius: 12px;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    font-weight: 900;
+    position: absolute;
+    
 }
