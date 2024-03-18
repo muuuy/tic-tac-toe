@@ -1,0 +1,46 @@
+:root {
+    --pastel-green: #77DD77;
+    --pastel-red: #FF6961;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-board {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    width: 50em;
+    height: 50em;
+    border: 1px solid black;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.board-space {
+    border: 1px solid black;
+}
+
+p {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 160px;
+    font-weight: 900;
+}
+
+.x-piece {
+    color: var(--pastel-red);
+}
+
+.o-piece {
+    color: var(--pastel-green);
+}
